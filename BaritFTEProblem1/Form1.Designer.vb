@@ -31,19 +31,26 @@ Partial Class Form1
         Me.lblName = New System.Windows.Forms.Label()
         Me.lblPrice = New System.Windows.Forms.Label()
         Me.lblCategory = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnAnalyze = New System.Windows.Forms.Button()
         CType(Me.numPrice, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtTitle
         '
-        Me.txtTitle.Location = New System.Drawing.Point(190, 63)
+        Me.txtTitle.Location = New System.Drawing.Point(12, 34)
         Me.txtTitle.Name = "txtTitle"
         Me.txtTitle.Size = New System.Drawing.Size(100, 20)
         Me.txtTitle.TabIndex = 0
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(190, 107)
+        Me.txtName.Location = New System.Drawing.Point(12, 82)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(100, 20)
         Me.txtName.TabIndex = 1
@@ -76,7 +83,7 @@ Partial Class Form1
         'lblTitle
         '
         Me.lblTitle.AutoSize = True
-        Me.lblTitle.Location = New System.Drawing.Point(190, 44)
+        Me.lblTitle.Location = New System.Drawing.Point(12, 15)
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(69, 13)
         Me.lblTitle.TabIndex = 5
@@ -85,7 +92,7 @@ Partial Class Form1
         'lblName
         '
         Me.lblName.AutoSize = True
-        Me.lblName.Location = New System.Drawing.Point(193, 90)
+        Me.lblName.Location = New System.Drawing.Point(15, 65)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(64, 13)
         Me.lblName.TabIndex = 6
@@ -109,11 +116,51 @@ Partial Class Form1
         Me.lblCategory.TabIndex = 8
         Me.lblCategory.Text = "Artwork Category:"
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.DataGridView1.Location = New System.Drawing.Point(193, 266)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(442, 150)
+        Me.DataGridView1.TabIndex = 10
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Artwork Title"
+        Me.Column1.Name = "Column1"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Artist "
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Category"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Price"
+        Me.Column4.Name = "Column4"
+        '
+        'btnAnalyze
+        '
+        Me.btnAnalyze.Location = New System.Drawing.Point(190, 218)
+        Me.btnAnalyze.Name = "btnAnalyze"
+        Me.btnAnalyze.Size = New System.Drawing.Size(94, 23)
+        Me.btnAnalyze.TabIndex = 11
+        Me.btnAnalyze.Text = "Analyze Exhibit"
+        Me.btnAnalyze.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnAnalyze)
+        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.lblCategory)
         Me.Controls.Add(Me.lblPrice)
         Me.Controls.Add(Me.lblName)
@@ -126,6 +173,7 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.numPrice, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -140,4 +188,10 @@ Partial Class Form1
     Friend WithEvents lblName As Label
     Friend WithEvents lblPrice As Label
     Friend WithEvents lblCategory As Label
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents btnAnalyze As Button
 End Class
