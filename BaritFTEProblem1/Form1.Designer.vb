@@ -24,21 +24,20 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.txtTitle = New System.Windows.Forms.TextBox()
         Me.txtName = New System.Windows.Forms.TextBox()
-        Me.numPrice = New System.Windows.Forms.NumericUpDown()
         Me.cmbCategory = New System.Windows.Forms.ComboBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.lblName = New System.Windows.Forms.Label()
         Me.lblPrice = New System.Windows.Forms.Label()
         Me.lblCategory = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgv = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAnalyze = New System.Windows.Forms.Button()
-        CType(Me.numPrice, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtPrice = New System.Windows.Forms.TextBox()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtTitle
@@ -54,13 +53,6 @@ Partial Class Form1
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(100, 20)
         Me.txtName.TabIndex = 1
-        '
-        'numPrice
-        '
-        Me.numPrice.Location = New System.Drawing.Point(343, 83)
-        Me.numPrice.Name = "numPrice"
-        Me.numPrice.Size = New System.Drawing.Size(120, 20)
-        Me.numPrice.TabIndex = 2
         '
         'cmbCategory
         '
@@ -116,14 +108,14 @@ Partial Class Form1
         Me.lblCategory.TabIndex = 8
         Me.lblCategory.Text = "Artwork Category:"
         '
-        'DataGridView1
+        'dgv
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.DataGridView1.Location = New System.Drawing.Point(193, 266)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(442, 150)
-        Me.DataGridView1.TabIndex = 10
+        Me.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgv.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.dgv.Location = New System.Drawing.Point(193, 266)
+        Me.dgv.Name = "dgv"
+        Me.dgv.Size = New System.Drawing.Size(442, 150)
+        Me.dgv.TabIndex = 10
         '
         'Column1
         '
@@ -154,26 +146,32 @@ Partial Class Form1
         Me.btnAnalyze.Text = "Analyze Exhibit"
         Me.btnAnalyze.UseVisualStyleBackColor = True
         '
+        'txtPrice
+        '
+        Me.txtPrice.Location = New System.Drawing.Point(343, 82)
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.Size = New System.Drawing.Size(100, 20)
+        Me.txtPrice.TabIndex = 12
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.txtPrice)
         Me.Controls.Add(Me.btnAnalyze)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgv)
         Me.Controls.Add(Me.lblCategory)
         Me.Controls.Add(Me.lblPrice)
         Me.Controls.Add(Me.lblName)
         Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.cmbCategory)
-        Me.Controls.Add(Me.numPrice)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.txtTitle)
         Me.Name = "Form1"
         Me.Text = "Form1"
-        CType(Me.numPrice, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -181,17 +179,17 @@ Partial Class Form1
 
     Friend WithEvents txtTitle As TextBox
     Friend WithEvents txtName As TextBox
-    Friend WithEvents numPrice As NumericUpDown
     Friend WithEvents cmbCategory As ComboBox
     Friend WithEvents btnAdd As Button
     Friend WithEvents lblTitle As Label
     Friend WithEvents lblName As Label
     Friend WithEvents lblPrice As Label
     Friend WithEvents lblCategory As Label
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgv As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents btnAnalyze As Button
+    Friend WithEvents txtPrice As TextBox
 End Class
