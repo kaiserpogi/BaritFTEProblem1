@@ -3,63 +3,87 @@
     Dim artistName As New List(Of String)
     Dim Price As New List(Of Decimal)
 
-    Dim painting As Integer
-    Dim sculpture As Integer
-    Dim digitalArt As Integer
-    Dim photography As Integer
-    Dim crafts As Integer
+
+    Dim categoryCount(4) As Integer ' 0=Painting, 1=Sculpture, 2=DigitalArt, 3=Photography, 4=Crafts
+    Dim categoryNames() As String = {"Painting", "Sculpture", "Digital Art", "Photography", "Crafts"}
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If txtTitle.Text = "" Then
-            MessageBox.Show("Please enter a valid title.")
-            Return
 
-            If txtName.Text = "" Then
-                MessageBox.Show("Please input your name.")
+        Dim inputs() As Control = {txtTitle, txtName, txtPrice}
+        Dim messages() As String = {"Please enter a valid title.", "Please input your name.", "Please enter a valid price."}
+
+        For i As Integer = 0 To inputs.Length - 1
+            If CType(inputs(i), TextBox).Text = "" Then
+                MessageBox.Show(messages(i))
                 Return
-
-                If txtPrice.Text = "" Then
-                    MessageBox.Show("Please enter a valid price.")
-                End If
             End If
-        End If
-        Title.Add(txtTitle.Text)
-        artistName.Add(txtName.Text)
-        Price.Add(Convert.ToDecimal(txtPrice.Text))
-
-        dgv.Rows.Add(txtTitle.Text, txtName.Text, cmbCategory.Text, txtPrice.Text)
-        dgv.AutoResizeRows()
+        Next
 
         If cmbCategory.SelectedIndex = -1 Then
             MessageBox.Show("Please select a valid category.")
             Return
-
-        ElseIf cmbCategory.SelectedIndex = 0 Then
-            painting += 1
-        ElseIf cmbCategory.SelectedIndex = 1 Then
-            sculpture += 1
-        ElseIf cmbCategory.SelectedIndex = 2 Then
-            digitalArt += 1
-        ElseIf cmbCategory.SelectedIndex = 3 Then
-            photography += 1
-        ElseIf cmbCategory.SelectedIndex = 4 Then
-            crafts += 1
         End If
 
+
+        Title.Add(txtTitle.Text)
+        artistName.Add(txtName.Text)
+        Price.Add(Convert.ToDecimal(txtPrice.Text))
+
+
+        categoryCount(cmbCategory.SelectedIndex) += 1
+
+
+        dgv.Rows.Add(txtTitle.Text, txtName.Text, cmbCategory.Text, txtPrice.Text)
+        dgv.AutoResizeRows()
+
+
+        ClearInputs()
     End Sub
 
     Private Sub btnAnalyze_Click(sender As Object, e As EventArgs) Handles btnAnalyze.Click
+        If Title.Count = 0 Then
+            MessageBox.Show("No artworks to analyze.")
+            Return
+        End If
+
         Dim sumofArtwork = Title.Count
         Dim totalPrice = Price.Sum()
         Dim avgPrice = Price.Average()
         Dim maxPrice = Price.Max()
         Dim minPrice = Price.Min()
 
-        MessageBox.Show("Total Artworks: " & sumofArtwork & vbCrLf &
-                        "Total Price: " & totalPrice.ToString & vbCrLf &
-                        "Average Price: " & avgPrice.ToString("F2") & vbCrLf &
-                        "Maximum Price: " & maxPrice & vbCrLf &
-                        "Minimum Price: " & minPrice & vbCrLf)
 
+        Dim analysisMessage As String = $"Total Artworks: {sumofArtwork}" & "Php" & vbCrLf &
+                                       $"Total Price: {totalPrice}" & "Php" & vbCrLf &
+                                       $"Average Price: {avgPrice:F2}" & "Php" & vbCrLf &
+                                       $"Maximum Price: {maxPrice}" & "Php" & vbCrLf &
+                                       $"Minimum Price: {minPrice}" & "Php" & vbCrLf & vbCrLf &
+                                       "Category Breakdown:" & vbCrLf
+
+        For i As Integer = 0 To categoryCount.Length - 1
+            analysisMessage &= $"{categoryNames(i)}: {categoryCount(i)}" & vbCrLf
+        Next
+
+        MessageBox.Show(analysisMessage)
+    End Sub
+
+    Private Sub ClearInputs()
+
+        For Each txtBox As TextBox In {txtTitle, txtName, txtPrice}
+            txtBox.Clear()
+        Next
+        cmbCategory.SelectedIndex = -1
+        txtTitle.Focus()
+    End Sub
+
+
+    Private Sub DisplayCategoryStats()
+        Dim statsMessage As String = "Artworks by Category:" & vbCrLf & vbCrLf
+
+        For i As Integer = 0 To categoryCount.Length - 1
+            statsMessage &= $"{categoryNames(i)}: {categoryCount(i)} artwork(s)" & vbCrLf
+        Next
+
+        MessageBox.Show(statsMessage)
     End Sub
 End Class
